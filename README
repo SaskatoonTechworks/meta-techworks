@@ -1,0 +1,7 @@
+This layer depends on:
+
+URI: git://github.com/openembedded/oe-core.git
+branch: master
+revision: HEAD
+
+Main layer maintainer: Daniel McGregor <dan.mcgregor@usask.ca>
