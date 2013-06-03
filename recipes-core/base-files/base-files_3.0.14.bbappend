@@ -3,7 +3,7 @@ DEFAULT_HOSTNAME ?= "openembedded"
 
 hostname = "${DEFAULT_HOSTNAME}"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+#FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 PRINC := "${@int(PRINC) + 1}"
 
 # remove log from volatiles.
