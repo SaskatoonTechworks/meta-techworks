@@ -12,7 +12,10 @@ RCONFLICTS_${PN} = "zsh"
 RREPLACES_${PN} = "zsh"
 RPROVIDES_${PN} = "zsh"
 
-SRC_URI = "http://downloads.sourceforge.net/project/zsh/zsh/${PV}/zsh-${PV}.tar.gz"
+SRC_URI = " \
+           http://downloads.sourceforge.net/project/zsh/zsh/${PV}/zsh-${PV}.tar.gz \
+           file://zsh_profile.sh \
+          "
 S = "${WORKDIR}/zsh-${PV}"
 
 inherit autotools gettext update-alternatives
@@ -40,6 +43,11 @@ export AUTOHEADER = "true"
 do_configure () {
     gnu-configize --force
     oe_runconf
+}
+
+do_install_append() {
+    install -d ${D}${sysconfdir}/profile.d
+    install -m 0644 ${WORKDIR}/zsh_profile.sh ${D}${sysconfdir}/profile.d
 }
 
 pkg_postinst_${PN} () {
