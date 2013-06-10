@@ -1,5 +1,4 @@
-DESCRIPTION = "A console-only systemd image with more full-featured Linux system \
-functionality installed."
+DESCRIPTION = "A console-only sysvinit image with openssh and procps."
 
 IMAGE_FEATURES += "ssh-server-openssh"
 IMAGE_FSTYPES += "ext3"
