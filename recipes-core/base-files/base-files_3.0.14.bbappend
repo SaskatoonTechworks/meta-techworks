@@ -14,3 +14,7 @@ volatiles := '${@oe_filter_out("log", "${volatiles}", d)}'
 dirs755 += "${localstatedir}/log"
 # don't create volatile/log
 dirs755 := '${@oe_filter_out("${localstatedir}/volatile/log", "${dirs755}", d)}'
+
+do_install_append() {
+	touch ${D}${localstatedir}/log/wtmp
+}
