@@ -8,7 +8,6 @@ TASK_BASIC_SSHDAEMON = ""
 
 IMAGE_INSTALL = "\
     packagegroup-boot \
-    packagegroup-base-extended \
     packagegroup-basic \
     procps \
     i2c-tools \
