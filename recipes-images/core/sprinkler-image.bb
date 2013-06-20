@@ -1,6 +1,6 @@
 DESCRIPTION = "A console-only image for my sprinkler system"
 
-IMAGE_FEATURES += "ssh-server-openssh"
+IMAGE_FEATURES += "ssh-server-openssh package-management"
 #IMAGE_FSTYPES += "ext3"
 
 VIRTUAL-RUNTIME_init_manager = "sysvinit"
