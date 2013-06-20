@@ -5,9 +5,10 @@ IMAGE_FEATURES += "ssh-server-dropbear"
 
 IMAGE_INSTALL = "\
     packagegroup-core-boot \
+    packagegroup-base-keyboard \
+    packagegroup-machine-base \
     packagegroup-distro-base \
-    init-ifupdown nano \
-    wiringpi tzdata keymaps \
+    nano wiringpi tzdata \
     sudo ntp tzdata-americas cronie \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
