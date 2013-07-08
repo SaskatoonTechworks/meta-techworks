@@ -10,19 +10,40 @@ TASK_BASIC_SSHDAEMON = ""
 # and make my programs for it work. Also
 # install the beaglebone webpage.
 
-# connman is used instead of ifupdown
-# zsh-full is a replacement for zsh that
-# installs the full featured version, not
-# the stripped down one from meta-oe.
-
 IMAGE_INSTALL = "\
     packagegroup-boot \
     packagegroup-basic \
-    procps tzdata-americas ntp nodejs bonescript \
-    i2c-tools beaglebone-getting-started ntpdate \
-    tmux coreutils gateone zsh-full sudo nodejs4 \
-    connman connman-tests connman-tools \
-    ${CORE_IMAGE_EXTRA_INSTALL} \
-    "
+    ${CORE_IMAGE_EXTRA_INSTALL}"
+
+# Special packages for me!!
+# Use sysvinit regardless...
+IMAGE_INSTALL += "\
+    sysvinit initscripts"
+
+# zsh-full is a replacement for zsh that
+# installs the full featured version, not
+# the stripped down one from meta-oe.
+IMAGE_INSTALL += "zsh-full"
+
+# Nice things to have:
+# * procps because busybox's ps sucks
+# * tzdata-americas because America/Regina isn't in the default one
+# * ntp because the beaglebone doesn't have an RTC
+# * i2c-tools because it's nice to debug that stuff
+# * coreutils because most of busybox's small tools are not awesome.
+# * tmux because I like it more than screen
+# * gateone is a handy HTML5 ssh client
+# * sudo is nice for setting up GPIO files and such
+# * git is needed for updating my code on the fly
+IMAGE_INSTALL += "\
+    procps tzdata-americas ntp ntpdate \
+    i2c-tools beaglebone-getting-started \
+    tmux coreutils gateone sudo git"
+
+# connman is used instead of ifupdown, thinking
+# of removing this because dbus sucks on small
+# images. It is useful for avahi and connman.
+IMAGE_INSTALL += "\
+    connman connman-tests connman-tools"
 
 inherit core-image
