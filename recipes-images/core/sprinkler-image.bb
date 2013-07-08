@@ -1,10 +1,6 @@
 DESCRIPTION = "A console-only image for my sprinkler system"
 
 IMAGE_FEATURES += "ssh-server-openssh package-management"
-#IMAGE_FSTYPES += "ext3"
-
-VIRTUAL-RUNTIME_init_manager = "sysvinit"
-TASK_BASIC_SSHDAEMON = ""
 
 # Installs the tools to make this board work
 # and make my programs for it work. Also
