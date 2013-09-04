@@ -18,7 +18,8 @@ SRC_URI = " \
           "
 S = "${WORKDIR}/zsh-${PV}"
 
-inherit autotools gettext update-alternatives
+#inherit autotools gettext update-alternatives
+inherit autotools gettext
 
 EXTRA_OECONF = " \
     --bindir=${base_bindir} \
@@ -33,10 +34,10 @@ EXTRA_OECONF = " \
     zsh_cv_shared_environ=yes \
 "
 
-ALTERNATIVE_${PN} = "sh"
-ALTERNATIVE_LINK_NAME[sh] = "${base_bindir}/sh"
-ALTERNATIVE_TARGET[sh] = "${base_bindir}/zsh"
-ALTERNATIVE_PRIORITY = "100"
+#ALTERNATIVE_${PN} = "sh"
+#ALTERNATIVE_LINK_NAME[sh] = "${base_bindir}/sh"
+#ALTERNATIVE_TARGET[sh] = "${base_bindir}/zsh"
+#ALTERNATIVE_PRIORITY = "100"
 
 export AUTOHEADER = "true"
 
@@ -45,14 +46,14 @@ do_configure () {
     oe_runconf
 }
 
-do_install_append() {
-    install -d ${D}${sysconfdir}/profile.d
-    install -m 0644 ${WORKDIR}/zsh_profile.sh ${D}${sysconfdir}/profile.d
-}
+#do_install_append() {
+#    install -d ${D}${sysconfdir}/profile.d
+#    install -m 0644 ${WORKDIR}/zsh_profile.sh ${D}${sysconfdir}/profile.d
+#}
 
 pkg_postinst_${PN} () {
     touch $D${sysconfdir}/shells
-    grep -q "bin/zsh" $D${sysconfdir}/shells || echo /bin/zsh >> $D${sysconfdir}/shells
+    grep -q "${base_bindir}/zsh" $D${sysconfdir}/shells || echo ${base_bindir}/zsh >> $D${sysconfdir}/shells
 }
 
 FILES_${PN}-dbg += "\

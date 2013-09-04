@@ -12,9 +12,12 @@ IMAGE_INSTALL = "\
     ${CORE_IMAGE_EXTRA_INSTALL}"
 
 # Special packages for me!!
-# Use sysvinit regardless...
+# Use whatever init manager the distro uses...
 IMAGE_INSTALL += "\
-    sysvinit initscripts"
+    ${VIRTUAL-RUNTIME_dev_manager} \
+    ${VIRTUAL-RUNTIME_login_manager} \
+    ${VIRTUAL-RUNTIME_init_manager} \
+    ${VIRTUAL-RUNTIME_initscripts}"
 
 # zsh-full is a replacement for zsh that
 # installs the full featured version, not
@@ -33,13 +36,14 @@ IMAGE_INSTALL += "zsh-full"
 # * git is needed for updating my code on the fly
 IMAGE_INSTALL += "\
     procps tzdata-americas ntp ntpdate \
-    i2c-tools beaglebone-getting-started \
-    tmux coreutils gateone sudo git"
+    i2c-tools tmux coreutils gateone \
+    sudo git cronie"
 
 # connman is used instead of ifupdown, thinking
 # of removing this because dbus sucks on small
 # images. It is useful for avahi and connman.
-IMAGE_INSTALL += "\
-    connman connman-tests connman-tools"
+IMAGE_INSTALL += "connman connman-tests connman-tools"
+
+IMAGE_INSTALL_append_beaglebone += " beaglebone-getting-started"
 
 inherit core-image
