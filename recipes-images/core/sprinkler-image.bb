@@ -1,14 +1,15 @@
 DESCRIPTION = "A console-only image for my sprinkler system"
 
 IMAGE_FEATURES += "ssh-server-openssh package-management"
+IMAGE_FEATURES += "dev-pkgs tools-sdk"
 
 # Installs the tools to make this board work
 # and make my programs for it work. Also
 # install the beaglebone webpage.
 
 IMAGE_INSTALL = "\
-    packagegroup-boot \
-    packagegroup-basic \
+    packagegroup-techworks-boot \
+    packagegroup-techworks-basic \
     ${CORE_IMAGE_EXTRA_INSTALL}"
 
 # Special packages for me!!
