@@ -31,6 +31,7 @@ RDEPENDS_${PN} = "\
     base-passwd \
     busybox \
     netbase \
+    techworks-version \
     ${@base_contains("MACHINE_FEATURES", "keyboard", "keymaps", "", d)} \
     ${MACHINE_ESSENTIAL_EXTRA_RDEPENDS} \
 "
